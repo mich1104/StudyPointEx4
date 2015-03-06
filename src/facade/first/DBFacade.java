@@ -47,6 +47,14 @@ public class DBFacade {
         
         return allUsers;
     }
+    
+    public List<Project> getAllProjects() {
+        List<Project> allProjects = new ArrayList();
+        Query query = em.createQuery("SELECT e FROM Project e");
+        allProjects = query.getResultList();
+        
+        return allProjects;
+    }
 
     public int createProject(String name, String description) {
         Project p = new Project(name, description);
@@ -85,4 +93,5 @@ public class DBFacade {
 //        em.persist(t);
         em.getTransaction().commit();
     }
+
 }
